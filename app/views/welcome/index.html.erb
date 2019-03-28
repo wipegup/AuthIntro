@@ -1,0 +1,9 @@
+<% if @current_user != nil %>
+Someone is logged in
+<%= link_to "Log Off", logoff_path, method: :post %>
+<% else %>
+No one is logged in
+<%= link_to "Log In", login_path %>
+<%end %>
+
+<%= link_to "New User", new_user_path%>
