@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:secret]
+
   def new
     @user = User.new
   end
@@ -15,7 +17,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def require_login
+    unless session[:current_user_id] != nil
+      flash[:error] = "must be logged in"
+      redirect_to root_path
+    end
+  end
+
   def error
+
+  end
+
+  def secret
 
   end
 

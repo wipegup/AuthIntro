@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   post 'logoff', to: 'session#logoff'
   # resources :login, only: [:create, :index]
   get 'user_error', to: 'users#error'
+
+  get 'secret', to: 'users#secret'
   resources :users, only: [:new, :create, :index]
 end

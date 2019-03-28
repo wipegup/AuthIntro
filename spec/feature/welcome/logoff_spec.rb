@@ -18,7 +18,21 @@ RSpec.describe 'User Logoff', type: :feature do
 
     click_link "Log Off"
     expect(page).to have_content("No one is logged in")
+  end
 
+  it 'can visit secret page while logged on' do
+    visit root_path
+
+    click_link 'Secret Page'
+    expect(current_path).to eq(secret_path)
+
+  end
+
+  it 'cannot visit secret page while not logged on' do
+    visit root_path
+    click_link "Log Off"
+    click_link 'Secret Page'
+    expect(current_path).to eq(root_path)
 
   end
 end
